@@ -1,3 +1,3 @@
 # Pixel Mural API
 
-API for Pixel Mural
+This is the API for Pixel Mural.
