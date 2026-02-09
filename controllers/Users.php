@@ -3,8 +3,7 @@
 class Users extends Controller {
 
 	static function GET() {
-		$token = SESSION( 'token' );
-		$User = User::newFromToken( $token );
+		$User = self::getUser();
 		json( $User );
 	}
 

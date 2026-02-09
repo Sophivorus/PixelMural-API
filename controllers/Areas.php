@@ -48,10 +48,10 @@ class Areas extends Controller {
 	static function POST() {
 		global $gDatabase;
 
-		$AREADATA = POST( 'area' );
+		$AREADATA = json_decode( POST( 'area' ), true );
 
-		$RESPONSE['oldAreaData'] = array();
-		$RESPONSE['newAreaData'] = array();
+		$RESPONSE['oldAreaData'] = [];
+		$RESPONSE['newAreaData'] = [];
 
 		// First get the old area data
 		foreach ( $AREADATA as $DATA ) {
@@ -60,8 +60,7 @@ class Areas extends Controller {
 			$RESPONSE['oldAreaData'][] = $oldPixel->getData();
 		}
 
-		$token = SESSION( 'token' );
-		$User = User::newFromToken( $token );
+		$User = self::getUser();
 		if ( !$User ) {
 			json( $RESPONSE );
 		}

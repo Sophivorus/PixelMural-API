@@ -33,21 +33,6 @@ class User extends Model {
 		}
 	}
 
-	static function newFromFacebookId( $facebook_id ) {
-		global $gDatabase;
-		if ( !$facebook_id ) {
-			return;
-		}
-		$Statement = $gDatabase->prepare( 'SELECT * FROM users WHERE facebook_id = ? LIMIT 1' );
-		$Statement->bind_param( 'i', $facebook_id );
-		$Statement->execute();
-		$RESULT = get_result( $Statement );
-		$DATA = array_shift( $RESULT );
-		if ( $DATA ) {
-			return new User( $DATA );
-		}
-	}
-
 	static function newFromIp( $ip ) {
 		global $gDatabase;
 		if ( !$ip ) {
