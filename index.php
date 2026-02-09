@@ -1,11 +1,14 @@
 <?php
 
 ob_start();
-session_start();
 
 include 'includes/config.php';
 include 'includes/functions.php';
 include 'vendor/autoload.php';
+
+$session = POST( 'session' );
+session_id( $session );
+session_start();
 
 // Initialize the database
 $gDatabase = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
