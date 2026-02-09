@@ -1,0 +1,7 @@
+includes/config.php
+vendor
+
+# DreamHost stuff
+.dh-diag
+favicon.gif
+favicon.ico
